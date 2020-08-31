@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png">
+    
+
+    <title>
+        
+          setting hexoBlog - Dasso Blog
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    <link rel="stylesheet" href="/css/book.css">
+    <script src="/js/book.js"></script>
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DASSO BLOG</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li>
+<h1 id="Home"><a href="/">Home</a></h1>
+</li>
+</ul>
+<h2 id="Hexo-Blog">Hexo Blog</h2>
+<ul>
+<li><a href="/Setting-Hexo-Blog">Setting-Hexo-Blog</a></li>
+</ul>
+
+</div>
+
+<script src="/js/book-menu.js"></script>
+  </div>
+
+  <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          
+<article id="page">
+  <h1>setting hexoBlog</h1>
+  <ol>
+<li>hexo setting을 위한 준비</li>
+</ol>
+<p>nodejs 설치<br>
+ref) <a href="https://nodejs.org/ko/download/" target="_blank" rel="noopener">https://nodejs.org/ko/download/</a></p>
+<p>git 설치<br>
+ref) <a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a><br>
+(설치 옵션은 모두 default로 가져가고, 편의상 cmd 깃을 사용합니다.)</p>
+<ol start="2">
+<li>github settings</li>
+</ol>
+<p>기본적으로 repository 2개를 생성합니다.<br>
+(하나는 코드용, 하나는 github 페이지용)<br>
+github 페이지용 리파지토리 네임은 <a href="http://dasso-co-kr.github.io">dasso-co-kr.github.io</a><br>
+처럼 만들어줍니다. (dasso-co-kr 은 본인 아이디로)</p>
+<p>github에서 적당한 프로젝트를 clone 합니다.</p>
+<p>(해당 부분은 정확한지 기억이 안나지만, 아래와 같이 진행했던 것 같습니다.)</p>
+<p>윈도우 탐색기에서 clone 받은 프로젝트의 .git 관련 폴더들을 모두 삭제해줘서,<br>
+리파지토리를 끊습니다.</p>
+<hr>
+<p>cf) 깃 관련 명령어들<br>
+1 로컬에 프로젝트를 만든다.<br>
+2  git init : 해당 프로젝트 디렉터리에서 이닛을 한다.<br>
+3  git config (–global) <a href="http://user.name" target="_blank" rel="noopener">user.name</a> “내이름”<br>
+git config (–global) user.email “내 이메일”<br>
+// 글로벌은 전역이고 안하면 그냥 개별임.<br>
+4  git remote add origin remoteRepo의 주소(&quot; 쌍따옴표는 넣지 않는다.)<br>
+5  git push -u origin master : 처음 푸시할 경우 -u 라는 옵션을 넣어주어야 하는 듯 하다.</p>
+<p>6 git add . (. 이라는 옵션은 전체다 스테이징 하겠다는 뜻인 듯)<br>
+7 git commit -m “커밋 메세지 넣기”<br>
+8 git push origin master : 리모트에 푸시하기.</p>
+<hr>
+<p>cmd에서 npm 명령어로 hexo를 설치합니다.</p>
+<p>npm i -g hexo-cli</p>
+<p>npm i</p>
+<p>theme 설정 관련해서는 저는 아래의 book theme를 적용했습니다.</p>
+<p>ref) <a href="https://github.com/kaiiiz/hexo-theme-book" target="_blank" rel="noopener">https://github.com/kaiiiz/hexo-theme-book</a></p>
+<p>위의 사이트에서 시키는 데로 진행하면 테마에 대한 기본적인 셋팅이 됩니다.</p>
+<p>(<br>
+cmd에서 theme 폴더에 적용할 테마의 폴더로 가서 npm i 를 해주고,<br>
+theme 변경시마다 변경할 테마 폴더로 진입하여 해당 명령어를 실행해주어야 합니다.<br>
+ex) cd themes/transquilpeak &amp;&amp; npm run build<br>
+)</p>
+<p>최상단의 _config.yml 에 아래와 같은 셋팅들을 해줍니다.</p>
+<p>'# Site<br>
+title: Dasso Blog<br>
+subtitle:<br>
+description:<br>
+keywords:<br>
+author: Dasso<br>
+language: en<br>
+timezone:</p>
+<p>url: <a href="https://dasso-co-kr.github.io">https://dasso-co-kr.github.io</a><br>
+(본인의 github page 주소)</p>
+<p>deploy:<br>
+type: git<br>
+repo: <a href="https://github.com/dasso-co-kr/dasso-co-kr.github.io" target="_blank" rel="noopener">https://github.com/dasso-co-kr/dasso-co-kr.github.io</a><br>
+(배포될 github 페이지 경로)</p>
+<p>'# Search Generator<br>
+search:<br>
+path: search.xml<br>
+field: post<br>
+(검색관련 셋팅인데 현재는 적용이 안되어 있습니다.)</p>
+<hr>
+<p>cf) hexo 관련 명령어들</p>
+<p>아래는 hexo 의 공식 reference 사이트로 hexo 관련 정보들이 망라되어 있습니다.<br>
+ref) <a href="https://hexo.io/ko/docs/" target="_blank" rel="noopener">https://hexo.io/ko/docs/</a></p>
+<p>cmd에서 블로그 폴더로 진입한 뒤</p>
+<p>(아래의 절차 중 일부는 불필요할 수 있으나, 제가 다음과 같은 절차를 밟았습니다.)</p>
+<p>hexo init 으로 hexo 폴더를 init 해줍니다.</p>
+<p>hexo new page(post/draft) title<br>
+(위의 명령어를 치면 새로운 폴더와 <a href="http://index.md" target="_blank" rel="noopener">index.md</a> 등이 생성됩니다.)</p>
+<p>hexo generate<br>
+(정적 파일들이 생성 된답니다.)</p>
+<p>hexo server<br>
+(로컬 서버로 돌립니다.)</p>
+<p>hexo deploy -g<br>
+(github 페이지로 배포를 하는데, -g 옵션은 Deploy 하기 전에 generate를 수행합니다.)</p>
+<hr>
+<p>이제 마크다운 문법에 맞게 글을 작성해주면 됩니다…</p>
+
+</article>
+
+<div id="paginator">
+  
+</div>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure
+          class="avatar avatar-lg"
+          data-initial="D"
+          style="background-color: #3b4351;">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>Dasso</div>
+      <div>2020-08-31</div>
+    </div>
+  </div>
+
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+<script src="/js/book-toc.js"></script>
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+<script src="/js/book.js"></script>
